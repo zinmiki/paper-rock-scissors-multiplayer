@@ -31,7 +31,16 @@ public class Client {
             System.out.println("3. scissors");
             System.out.print("Select an item: ");
 
-            String item = scanner.nextLine();
+            String item;
+            if (scanner.hasNextLine()) {
+                item = scanner.nextLine();
+                //Przetwarzanie linii
+            } else {
+                System.out.println("Brak danych wejściowych.");
+                scanner.reset();
+                item = scanner.nextLine();
+            }
+
             System.out.println("Waiting for player choises..");
             return item;
         }
