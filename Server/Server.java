@@ -53,6 +53,10 @@ public class Server {
         }
         int port = Integer.parseInt(args[0]);
         int playersCount = Integer.parseInt(args[1]);
+        if (playersCount < 2 || playersCount > 100) {
+            System.out.println("Minimum players to play is 2");
+            playersCount = 2;
+        }
         // int port = 12345;
         // int playersCount = 4;
 
@@ -166,9 +170,17 @@ public class Server {
                 }
             }
             try {
-                if (mode == "NEW") {
+                if (mode == "NEW" && players.size() >= 2) {
                     System.out.println("Starting new round!");
                     Thread.sleep(3000); // Add a 3-second delay between round
+                } else {
+                    System.out.println("Not enough players to continue.");
+                    for (PlayerHandler p : players) {
+                    p.send("ENOUGH");
+                    p.send("KICK");
+                    mode = "null";
+                    break;
+                }
                 }
                 Thread.sleep(1000); // Add a 1-second delay between messages
             } catch (InterruptedException e) {

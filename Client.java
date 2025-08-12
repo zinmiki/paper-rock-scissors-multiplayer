@@ -89,6 +89,9 @@ public class Client {
                         case "LIMIT" -> {
                             System.out.println("ROUND LIMIT! Thanks for playing. See you soon");
                         }
+                        case "ENOUGH" -> {
+                            System.out.println("Too many players have left the server. The game cannot continue.");
+                        }
                         case "KICK" -> {
                             try {
                                 System.out.println("\nYou are kicked from the server");
