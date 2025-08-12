@@ -24,26 +24,25 @@ public class Client {
     }
 
     public static String selectItem() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("==Please select an item from the list:==");
-            System.out.println("1. paper");
-            System.out.println("2. rock");
-            System.out.println("3. scissors");
-            System.out.print("Select an item: ");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("==Please select an item from the list:==");
+        System.out.println("1. paper");
+        System.out.println("2. rock");
+        System.out.println("3. scissors");
+        System.out.print("Select an item: ");
 
-            String item;
-            if (scanner.hasNextLine()) {
-                item = scanner.nextLine();
-                //Przetwarzanie linii
-            } else {
-                System.out.println("Brak danych wejściowych.");
-                scanner.reset();
-                item = scanner.nextLine();
-            }
-
-            System.out.println("Waiting for player choises..");
-            return item;
+        String item;
+        if (scanner.hasNextLine()) {
+            item = scanner.nextLine();
+            //Przetwarzanie linii
+        } else {
+            System.out.println("Brak danych wejściowych.");
+            scanner.reset();
+            item = scanner.nextLine();
         }
+
+        System.out.println("Waiting for player choises..");
+        return item;
     }
     public static void main(String[] args) {
         if (args.length < 2) {
